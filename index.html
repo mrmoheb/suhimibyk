@@ -9,41 +9,16 @@
     <meta name="description" content="" />
     <meta name="Mohamed Moheb" content="Sushimi By Khaled El Hady" />
     <title>Sushimi By Khaled El Hady</title>
-
+    	
+  <link rel='icon' href='favicon.ico'>
     <!-- Bootstrap core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="resources/css/main.css" rel="stylesheet" />
     <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"
   ></script>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      .card-img-top{
-        max-height: 17em;;
-      }
-      .home-page-carousel-item{
-        width:100%;
-        height: 85vh;
-      }
-      .card{
-        margin-bottom:1em;
-        width:18rem;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <!-- Custom styles for this template -->
   </head>
   <body style="background:#fff">
@@ -131,11 +106,8 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <!-- Marketing messaging and featurettes
-  ================================================== -->
-      <!-- Wrap the rest of the page in another container to center all the content. -->
       <hr />
-      <div class="container marketing" id="menu">
+      <div class="container" id="menu">
         <!-- Three columns of text below the carousel -->
         <h1 style="text-align: center;">Our Menu</h1>
         <hr />
@@ -150,10 +122,12 @@
                 <p class="card-text"></p>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Mixture of Philadelphia Cheese,Avocado and Shrimp Tempura</li>
+                  <li class="list-group-item">8 Pieces</li>
                   <li class="list-group-item">Roll Price: 90LE</li>
                   <li class="list-group-item">
                     <label>Select number of rolls</label>
-                    <select class="form-control">
+                    <select class="form-control" onChange="handleChange(this)" id="0">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -181,10 +155,12 @@
                 <p class="card-text"></p>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Mixture of Philadelphia Cheese,Avocado and Shrimp Tempura</li>
+                  <li class="list-group-item">6 Pieces</li>
                   <li class="list-group-item">Roll Price: 118LE</li>
                   <li class="list-group-item">
                     <label>Select number of rolls</label>
-                    <select class="form-control">
+                    <select class="form-control"  onChange="handleChange(this)" id="1">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -212,10 +188,12 @@
                 <p class="card-text"></p>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Mixture of Philadelphia Cheese,Avocado and Shrimp Tempura</li>
+                  <li class="list-group-item">8 Pieces</li>
                   <li class="list-group-item">Roll Price: 72LE</li>
                   <li class="list-group-item">
                     <label>Select number of rolls</label>
-                    <select class="form-control">
+                    <select class="form-control" id="2" onChange="handleChange(this)">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -245,10 +223,12 @@
                 <p class="card-text"></p>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Mixture of Philadelphia Cheese,Avocado and Shrimp Tempura</li>
+                  <li class="list-group-item">5 Pieces</li>
                   <li class="list-group-item">Roll Price: 72LE</li>
                   <li class="list-group-item">
                     <label>Select number of rolls</label>
-                    <select class="form-control">
+                    <select class="form-control"  onChange="handleChange(this)" id="3">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -271,21 +251,26 @@
            <div class="col-xs-12 col-md-2">
             <div class="card">
               <h5 class="card-header">Cart</h5>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">8x New Style Philadelphia Roll</li>
-                <li class="list-group-item">2x Hanamo Roll</li>
-                <li class="list-group-item">8x Pink Panther Roll</li>
-                <li class="list-group-item">4x Spicy Lemon Roll Roll</li>
+              <ul class="list-group list-group-flush" id="cart-listing">
+                <li class="list-group-item">You haven't selected rolls</li>
               </ul>
               <div class="card-body">
-                <h5 class="card-title">Total</h5>
-                <p class="card-text">2960 LE</p>
+                <h5 class="card-title">Estimated Total</h5>
+                <p class="card-text" id="total-cart">0 LE</p>
                 <form style="padding-bottom:1em;">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Your Name:</label>
+                    <input type="text" class="form-control" placeholder="ex. Khhaled El-Hady"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Mobile Number:</label>
+                    <input type="text" class="form-control" placeholder="ex. +20100xxxxxxx"/>
+                  </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Address:</label>
                     <textarea class="form-control" placeholder="680 Mohamed Moheb St. 3rd Floor"></textarea>
                   </div>
-
+                  
                   <div class="form-group">
                     <label for="exampleInputPassword1">Date:</label>
                     <input type="date" class="form-control">
@@ -310,7 +295,7 @@
                   </div>
                   
                 </form>
-                <a href="#" class="btn btn-primary">Checkout</a>
+                <a href="#" class="btn btn-success">Checkout</a>
               </div>
             </div>
            </div>
@@ -335,10 +320,33 @@
       </div>
     </main>
     <script>
-      window.jQuery ||
-        document.write(
-          '<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>'
-        );
+      var rolls = [
+        {name:"New Style Philadelphia",quantity:0,price:90},
+        {name:"Spicy Lemon Roll",quantity:0,price:118},
+        {name:"Pink Panther",quantity:0,price:72},
+        {name:"Pinky Queen",quantity:0,price:72},
+        ]
+      function handleChange(object){
+        rolls[object.id].quantity = parseInt(object.value);
+        let total = 0 ;
+        rolls.map((roll)=>{
+          total +=(roll.quantity * roll.price);
+        })
+        let listing = ``;
+        let flag = false;
+        rolls.map((roll)=>{
+          if(roll.quantity >0){
+            flag = true;
+            listing += `<li class="list-group-item">${roll.quantity}x ${roll.name} </li>`
+          }
+        })
+        if(flag){
+          total += 350;
+          listing +=`<li class="list-group-item">350 LE Catering Service</li>`
+        }
+        $('#total-cart').html(total + ' LE')
+        $('#cart-listing').html(listing);
+      }
     </script>
     <script src="resources/js/bootstrap.bundle.min.js"></script>
   </body>
